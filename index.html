@@ -183,11 +183,15 @@
 
   /* ---- certs ---- */
   .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media(max-width:760px){.certs{grid-template-columns:1fr}}
+  @media(max-width:760px){.certs{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.certs{grid-template-columns:1fr}}
   .cert{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--surface);transition:.2s}
   .cert:hover{border-color:var(--accent);background:var(--surface-2)}
   .cert .cn{font-weight:600;font-size:15px}
   .cert .cd{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:6px}
+  a.cert{text-decoration:none;color:inherit;display:block;cursor:pointer}
+  .verify-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--muted);text-decoration:none;transition:color .2s}
+  .verify-link:hover{color:var(--accent)}
 
   /* ---- contact ---- */
   .contact{text-align:center;padding-bottom:120px}
@@ -241,7 +245,7 @@
     <div class="role reveal">Offensive Security <span>//</span> AD &amp; ADCS Exploitation <span>//</span> Multi-Cloud Pentesting</div>
     <p class="lede reveal">I engineer high-fidelity threat simulations, from <b>burn-resistant C2 infrastructure</b> to deep <b>Active Directory &amp; ADCS</b> exploitation across hybrid and multi-cloud environments. Currently <b>Red Team Lead at RBT Security</b>. DEF CON speaker, tool author, and security researcher.</p>
     <div class="cta reveal">
-      <a class="btn primary" href="#contact">Initiate contact →</a>
+      <a class="btn primary" href="https://www.linkedin.com/in/0xas1f/" target="_blank" rel="noopener">Initiate contact →</a>
       <a class="btn" href="#arsenal">View arsenal</a>
       <a class="btn" href="https://rbtsec.com/blog" target="_blank" rel="noopener">Read the blog ↗</a>
     </div>
@@ -388,32 +392,35 @@
     <div style="margin-top:30px" class="reveal">
       <div class="lbl"><span class="num">04.1</span> / Publications</div>
       <div class="pub-list">
-        <a class="pub" href="https://rbtsec.com/blog" target="_blank" rel="noopener"><span class="ix">001</span><span class="t">Azure – Microsoft Midnight Blizzard Attack Analysis &amp; Walk-through</span></a>
-        <a class="pub" href="https://rbtsec.com/blog" target="_blank" rel="noopener"><span class="ix">002</span><span class="t">A Sneak Peek into Lateral Movement from On-Premises to M365 / Azure</span></a>
-        <a class="pub" href="https://rbtsec.com/blog" target="_blank" rel="noopener"><span class="ix">003</span><span class="t">Active Directory Certificate Attack (ADCS – ESC6)</span></a>
-        <a class="pub" href="https://rbtsec.com/blog" target="_blank" rel="noopener"><span class="ix">004</span><span class="t">Active Directory Certificate Attack (ADCS – ESC3)</span></a>
-        <a class="pub" href="https://rbtsec.com/blog" target="_blank" rel="noopener"><span class="ix">005</span><span class="t">Redis Server: Basic Enumeration</span></a>
+        <a class="pub" href="https://www.rbtsec.com/blog/microsoft-midnight-blizzard-attack-walk-through/" target="_blank" rel="noopener"><span class="ix">001</span><span class="t">Azure – Microsoft Midnight Blizzard Attack Analysis &amp; Walk-through</span></a>
+        <a class="pub" href="https://www.rbtsec.com/blog/a-sneak-peek-into-the-lateral-movement-from-on-premises-to-m365/" target="_blank" rel="noopener"><span class="ix">002</span><span class="t">A Sneak Peek into Lateral Movement from On-Premises to M365 / Azure</span></a>
+        <a class="pub" href="https://www.rbtsec.com/blog/active-directory-certificate-attack-adcs-esc6/" target="_blank" rel="noopener"><span class="ix">003</span><span class="t">Active Directory Certificate Attack (ADCS – ESC6)</span></a>
+        <a class="pub" href="https://www.rbtsec.com/blog/active-directory-certificate-services-adcs-esc3/" target="_blank" rel="noopener"><span class="ix">004</span><span class="t">Active Directory Certificate Attack (ADCS – ESC3)</span></a>
+        <a class="pub" href="https://medium.com/@0xAs1F/pentester-academy-lab-walkthrough-redis-server-basics-f75da0eef1a2" target="_blank" rel="noopener"><span class="ix">005</span><span class="t">Redis Server: Basic Enumeration</span></a>
       </div>
     </div>
 
     <div style="margin-top:44px" class="reveal">
       <div class="lbl"><span class="num">04.2</span> / Open-source tools</div>
       <div class="cards">
-        <div class="card">
+        <a class="card" href="https://github.com/rbtsecurity/OffsecScripts" target="_blank" rel="noopener">
           <div class="kk">Bash</div>
           <h3>OffsecScripts</h3>
           <p>Scripts for Active Directory Certificate Services (ADCS) attacks and phishing setups using M365-Stealer.</p>
-        </div>
-        <div class="card">
+          <span class="go">View on GitHub ↗</span>
+        </a>
+        <a class="card" href="https://github.com/0xAs1F/getCognitoCreds" target="_blank" rel="noopener">
           <div class="kk">Python</div>
           <h3>GetCognitoCreds</h3>
           <p>Tests AWS Cognito misconfigurations and retrieves AWS credentials via authenticated and unauthenticated access.</p>
-        </div>
-        <div class="card">
+          <span class="go">View on GitHub ↗</span>
+        </a>
+        <a class="card" href="https://github.com/0xAs1F/hack-cognito" target="_blank" rel="noopener">
           <div class="kk">Flask · Lab</div>
           <h3>Hack-Cognito</h3>
           <p>Intentionally vulnerable application for learning to identify and exploit AWS Cognito misconfigurations.</p>
-        </div>
+          <span class="go">View on GitHub ↗</span>
+        </a>
       </div>
     </div>
   </div>
@@ -424,16 +431,17 @@
     <div class="lbl reveal"><span class="num">05</span> / Certifications</div>
     <h2 class="reveal">Credentials.</h2>
     <div class="certs">
-      <div class="cert reveal"><div class="cn">Certified Red Team Operator (CRTO)</div><div class="cd">Sep 2023</div></div>
-      <div class="cert reveal"><div class="cn">HTB Certified Penetration Testing Specialist (CPTS)</div><div class="cd">Feb 2025</div></div>
-      <div class="cert reveal"><div class="cn">GCP – Professional Cloud Security Engineer</div><div class="cd">Oct 2024</div></div>
-      <div class="cert reveal"><div class="cn">GCP – Professional Cloud Architect</div><div class="cd">Oct 2024</div></div>
-      <div class="cert reveal"><div class="cn">GCP – Professional Data Engineer</div><div class="cd">Jan 2026</div></div>
-      <div class="cert reveal"><div class="cn">AWS Certified Cloud Practitioner</div><div class="cd">Jul 2023</div></div>
-      <div class="cert reveal"><div class="cn">Blue Team Level 1 (BTL1)</div><div class="cd">Mar 2023</div></div>
-      <div class="cert reveal"><div class="cn">Pentester Academy Cloud Security Pro (paCSP)</div><div class="cd">Sep 2021</div></div>
-      <div class="cert reveal"><div class="cn">INE Certified Cloud Associate (ICCA)</div><div class="cd">Jun 2022</div></div>
+      <a class="cert reveal" href="https://eu.badgr.com/public/assertions/F1qF-bs8SwakTDKhIVpxZQ" target="_blank" rel="noopener"><div class="cn">Certified Red Team Operator (CRTO)</div><div class="cd">Sep 2023</div></a>
+      <a class="cert reveal" href="https://www.credly.com/badges/85314be7-5665-482b-be9c-e29de38d89a2/public_url" target="_blank" rel="noopener"><div class="cn">HTB Certified Penetration Testing Specialist (CPTS)</div><div class="cd">Feb 2025</div></a>
+      <a class="cert reveal" href="https://www.credly.com/badges/bf338017-e9df-40e1-9165-620dfe03aef8" target="_blank" rel="noopener"><div class="cn">GCP – Professional Cloud Security Engineer</div><div class="cd">Oct 2024</div></a>
+      <a class="cert reveal" href="https://www.credly.com/badges/b9ae0650-2e91-4bd2-b121-b5342ce35bd8" target="_blank" rel="noopener"><div class="cn">GCP – Professional Cloud Architect</div><div class="cd">Oct 2024</div></a>
+      <a class="cert reveal" href="https://www.credly.com/badges/b95f4d5c-a317-489f-bfad-ee7fdeb622b5" target="_blank" rel="noopener"><div class="cn">GCP – Professional Data Engineer</div><div class="cd">Jan 2026</div></a>
+      <a class="cert reveal" href="https://www.credly.com/badges/0691a900-52c4-439f-8f3f-bec70e5458f1" target="_blank" rel="noopener"><div class="cn">AWS Certified Cloud Practitioner</div><div class="cd">Jul 2023</div></a>
+      <a class="cert reveal" href="https://www.credly.com/badges/b63edb90-6ea0-4c61-8840-48c05e377f3c" target="_blank" rel="noopener"><div class="cn">Blue Team Level 1 (BTL1)</div><div class="cd">Mar 2023</div></a>
+      <a class="cert reveal" href="https://www.credential.net/profile/asifkhan552980/wallet" target="_blank" rel="noopener"><div class="cn">Pentester Academy Cloud Security Pro (paCSP)</div><div class="cd">Sep 2021</div></a>
+      <a class="cert reveal" href="https://certs.ine.com/d1d899d5-adb9-493a-b223-227a88573274" target="_blank" rel="noopener"><div class="cn">INE Certified Cloud Associate (ICCA)</div><div class="cd">Jun 2022</div></a>
     </div>
+    <a class="verify-link reveal" href="https://www.credly.com/users/0xas1f/badges" target="_blank" rel="noopener">Verify all on Credly ↗</a>
   </div>
 </section>
 
@@ -441,10 +449,9 @@
   <div class="wrap">
     <div class="lbl reveal" style="justify-content:center"><span class="num">06</span> / Contact</div>
     <h2 class="reveal">Let's compromise something,<br>with permission.</h2>
-    <div class="big reveal"><a href="mailto:asifjmi89@gmail.com">asifjmi89@gmail.com</a></div>
     <div class="socials reveal">
-      <a href="https://www.linkedin.com/in/0xas1f" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="https://github.com/0xas1f" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/0xas1f/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/0xAs1F" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://youtube.com/playlist?list=PLUMEY7cBcvDP19HB3qoBO6uTp-wxDFbFX" target="_blank" rel="noopener">YouTube ↗</a>
       <a href="https://rbtsec.com/blog" target="_blank" rel="noopener">Blog ↗</a>
     </div>
