@@ -104,9 +104,9 @@
   .caret{display:inline-block;width:9px;height:1.1em;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
   h1{font-family:'Syne',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.02em;
-    font-size:clamp(32px,11vw,140px);margin:6px 0 4px}
+    font-size:clamp(32px,11vw,140px);margin:6px 0 4px;overflow:hidden}
   h1 .l2{display:block;color:transparent;-webkit-text-stroke:1.4px var(--text);
-    font-size:clamp(24px,6.5vw,96px);white-space:nowrap;overflow:hidden;min-height:1.2em}
+    font-size:clamp(24px,6vw,72px);white-space:nowrap;overflow:hidden;min-height:1.2em}
   .role{font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.9vw,18px);letter-spacing:.04em;color:var(--accent-dim);margin:18px 0 26px}
   .role span{color:var(--faint)}
   .lede{max-width:620px;font-size:clamp(16px,2.1vw,19px);color:var(--muted)}
@@ -267,7 +267,7 @@
     <div class="term reveal"><span class="u">asif@redteam</span><span class="p">:</span>~$ <span id="typed"></span><span class="caret"></span></div>
     <h1 class="reveal">ASIF KHAN<span class="l2" id="cycleTitle"></span></h1>
     <div class="role reveal">Penetration Testing <span>//</span> Red Teaming <span>//</span> Cloud &amp; AD Security</div>
-    <p class="lede reveal">I deliver penetration tests and security assessments across <b>web, mobile, API, network, wireless, and cloud</b> environments — and run advanced red team operations when organisations need to pressure-test their defences against real adversary behaviour. Deep expertise in <b>Active Directory &amp; ADCS</b> exploitation. Currently <b>Red Team Lead at RBT Security</b>. DEF CON speaker, tool author, security researcher.</p>
+    <p class="lede reveal">I deliver penetration tests and security assessments across <b>web, mobile, API, network, wireless, and cloud</b> environments, including advanced red team operations for organisations that need to pressure-test their defences against real adversary behaviour. Deep expertise in <b>Active Directory &amp; ADCS</b> exploitation. Currently <b>Red Team Lead at RBT Security</b>. DEF CON speaker, tool author, security researcher.</p>
     <div class="cta reveal">
       <a class="btn primary" href="https://www.linkedin.com/in/0xas1f/" target="_blank" rel="noopener">Initiate contact →</a>
       <a class="btn" href="#arsenal">View arsenal</a>
@@ -285,11 +285,11 @@
 <section id="about">
   <div class="wrap">
     <div class="lbl reveal"><span class="num">01</span> / About</div>
-    <h2 class="reveal">Thinking like the<br>adversary, by design.</h2>
+    <h2 class="reveal" id="aboutTitle">Thinking like the adversary, by design.</h2>
     <div class="about-grid">
       <div class="reveal">
-        <p>I'm an offensive security professional with <b>4+ years</b> of hands-on experience running penetration tests and red team engagements across a wide range of targets. My work covers <b>web, mobile, API, network, wireless, and thick-client</b> assessments, cloud security testing across AWS, Azure, and GCP, and full-scope adversary simulations — from initial access and lateral movement through to objectives.</p>
-        <p>I go deep on <b>Active Directory and ADCS</b> exploitation, domain privilege escalation, and Kerberos attacks. Beyond client work, I publish research, ship open-source tooling, and teach — translating complex offensive techniques into clear, actionable risk for technical and executive audiences alike.</p>
+        <p>I'm an offensive security professional with <b>4+ years</b> of hands-on experience running penetration tests and red team engagements across a wide range of targets. My work covers <b>web, mobile, API, network, wireless, and thick-client</b> assessments, cloud security testing across AWS, Azure, and GCP, and full-scope adversary simulations from initial access and lateral movement through to objectives.</p>
+        <p>I go deep on <b>Active Directory and ADCS</b> exploitation, domain privilege escalation, and Kerberos attacks. Beyond client work, I publish research, ship open-source tooling, and teach, translating complex offensive techniques into clear, actionable risk for technical and executive audiences alike.</p>
       </div>
       <div class="focus reveal">
         <h4>// Focus areas</h4>
@@ -535,6 +535,31 @@
     }
   }
   if(reduce){ cycleEl.textContent = titles[0]; } else { setTimeout(cycleTitle, 1400); }
+
+  // cycling about heading
+  var aboutEl = document.getElementById('aboutTitle');
+  var aHeadings = ['Thinking like the adversary, by design.','Real tests. Real findings.','Security built on actual attack paths.','Finding gaps before attackers do.'];
+  var ahi=0, aci=0, aErase=false;
+  function cycleAbout(){
+    var w=aHeadings[ahi];
+    if(!aErase){
+      aboutEl.textContent=w.slice(0,++aci);
+      if(aci===w.length){aErase=true;setTimeout(cycleAbout,2400);return;}
+      setTimeout(cycleAbout,55+Math.random()*35);
+    } else {
+      aboutEl.textContent=w.slice(0,--aci);
+      if(aci===0){aErase=false;ahi=(ahi+1)%aHeadings.length;setTimeout(cycleAbout,350);return;}
+      setTimeout(cycleAbout,28+Math.random()*18);
+    }
+  }
+  if(reduce){ aboutEl.textContent=aHeadings[0]; }
+  else {
+    aboutEl.textContent='';
+    var aIO=new IntersectionObserver(function(en){
+      if(en[0].isIntersecting){cycleAbout();aIO.disconnect();}
+    },{threshold:.4});
+    aIO.observe(aboutEl);
+  }
 
   // staggered hero reveal
   var heroReveals = document.querySelectorAll('header .reveal');
