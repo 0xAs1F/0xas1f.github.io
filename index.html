@@ -104,7 +104,7 @@
   .caret{display:inline-block;width:9px;height:1.1em;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
   h1{font-family:'Syne',sans-serif;font-weight:800;line-height:.95;letter-spacing:-.02em;
-    font-size:clamp(52px,11vw,140px);margin:6px 0 4px}
+    font-size:clamp(32px,11vw,140px);margin:6px 0 4px}
   h1 .l2{display:block;color:transparent;-webkit-text-stroke:1.4px var(--text)}
   .role{font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.9vw,18px);letter-spacing:.04em;color:var(--accent-dim);margin:18px 0 26px}
   .role span{color:var(--faint)}
@@ -199,12 +199,35 @@
   .contact .big{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,7vw,84px);letter-spacing:-.02em;line-height:1}
   .contact .big a{color:var(--text);text-decoration:none;border-bottom:3px solid var(--accent);transition:.25s}
   .contact .big a:hover{color:var(--accent)}
-  .socials{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:42px}
+  .socials{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px}
   .socials a{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:11px 18px;transition:.2s;cursor:none}
   .socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
   footer{border-top:1px solid var(--line);padding:30px 0}
   .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--faint)}
+
+  /* ---- anchor resets ---- */
+  a.card{text-decoration:none;color:inherit}
+  a.pub{text-decoration:none;color:inherit}
+
+  /* ---- 3-col tool grid ---- */
+  .cards-3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.cards-3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.cards-3{grid-template-columns:1fr}}
+
+  /* ---- mobile layout ---- */
+  @media(max-width:760px){
+    header{padding:88px 0 60px}
+    section{padding:64px 0}
+    .contact{padding-bottom:80px}
+    .stats{gap:20px;margin-top:44px}
+    .cta{flex-direction:column}
+    .btn{justify-content:center;width:100%}
+  }
+  @media(max-width:480px){
+    .wrap{padding:0 20px}
+    .nav-in{padding:12px 20px}
+  }
 
   /* ---- reveal ---- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -402,7 +425,7 @@
 
     <div style="margin-top:44px" class="reveal">
       <div class="lbl"><span class="num">04.2</span> / Open-source tools</div>
-      <div class="cards">
+      <div class="cards cards-3">
         <a class="card" href="https://github.com/rbtsecurity/OffsecScripts" target="_blank" rel="noopener">
           <div class="kk">Bash</div>
           <h3>OffsecScripts</h3>
