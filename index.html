@@ -264,7 +264,7 @@
   <div class="wrap">
     <div class="status reveal"><span class="pulse"></span> System online · available for engagements</div>
     <div class="term reveal"><span class="u">asif@redteam</span><span class="p">:</span>~$ <span id="typed"></span><span class="caret"></span></div>
-    <h1 class="reveal">ASIF KHAN<span class="l2">RED TEAM LEAD</span></h1>
+    <h1 class="reveal">ASIF KHAN<span class="l2" id="cycleTitle"></span></h1>
     <div class="role reveal">Offensive Security <span>//</span> AD &amp; ADCS Exploitation <span>//</span> Multi-Cloud Pentesting</div>
     <p class="lede reveal">I engineer high-fidelity threat simulations, from <b>burn-resistant C2 infrastructure</b> to deep <b>Active Directory &amp; ADCS</b> exploitation across hybrid and multi-cloud environments. Currently <b>Red Team Lead at RBT Security</b>. DEF CON speaker, tool author, and security researcher.</p>
     <div class="cta reveal">
@@ -516,6 +516,24 @@
       if(i<=cmd.length){ typed.textContent = cmd.slice(0,i); i++; setTimeout(type, 45 + Math.random()*40); }
     })();
   }
+
+  // cycling subtitle
+  var cycleEl = document.getElementById('cycleTitle');
+  var titles = ['Pentester','Cybersecurity Professional','Security Researcher','Offensive Security'];
+  var ti = 0, ci = 0, erasing = false;
+  function cycleTitle(){
+    var word = titles[ti];
+    if(!erasing){
+      cycleEl.textContent = word.slice(0, ++ci);
+      if(ci === word.length){ erasing = true; setTimeout(cycleTitle, 2000); return; }
+      setTimeout(cycleTitle, 60 + Math.random()*40);
+    } else {
+      cycleEl.textContent = word.slice(0, --ci);
+      if(ci === 0){ erasing = false; ti = (ti+1) % titles.length; setTimeout(cycleTitle, 350); return; }
+      setTimeout(cycleTitle, 30 + Math.random()*20);
+    }
+  }
+  if(reduce){ cycleEl.textContent = titles[0]; } else { setTimeout(cycleTitle, 1400); }
 
   // staggered hero reveal
   var heroReveals = document.querySelectorAll('header .reveal');
